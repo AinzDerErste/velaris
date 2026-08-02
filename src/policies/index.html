@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Search the public record of Velaris policies that operate outside SEED's in-game systems." />
+    <meta name="theme-color" content="#eef0e5" />
+    <title>Public Policy Ledger · VELARIS</title>
+    <link rel="icon" href="../favicon.ico?v=3" sizes="any" />
+    <link rel="apple-touch-icon" href="../assets/velaris-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script type="module" src="ledger.mjs"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header" aria-label="Site header">
+        <a class="brand" href="../" aria-label="Velaris home"><img class="brand-mark" src="../assets/velaris-icon.png" alt="" /><span>VELARIS</span></a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a class="nav-link" href="../">Home</a>
+          <a class="nav-link" href="../history/">History</a>
+          <a class="nav-link nav-link-active" href="./" aria-current="page">Policies</a>
+          <a class="nav-link" href="../tools/">Tools</a>
+        </nav>
+      </header>
+
+      <main>
+      <section class="ledger" aria-labelledby="ledger-title">
+          <div class="ledger-heading">
+            <div><p class="eyebrow">POLICY LEDGER</p><h2 id="ledger-title">Search the record</h2></div>
+            <output id="policy-count" class="ledger-count" aria-live="polite">0 policies</output>
+          </div>
+
+          <form class="ledger-controls" id="ledger-controls" role="search">
+            <label class="ledger-search">
+              <span class="field-label">Search policies</span>
+              <span class="input-wrap"><input id="policy-search" name="q" type="search" placeholder="Title, policy ID, topic, or text" autocomplete="off" /></span>
+            </label>
+            <label class="ledger-filter">
+              <span class="field-label">Status</span>
+              <select id="policy-status" name="status">
+                <option value="all">All statuses</option>
+                <option value="draft">Draft</option>
+                <option value="active">Active</option>
+                <option value="under-review">Under review</option>
+                <option value="superseded">Superseded</option>
+                <option value="archived">Archived</option>
+              </select>
+            </label>
+            <label class="ledger-filter">
+              <span class="field-label">Category</span>
+              <select id="policy-category" name="category"><option value="all">All categories</option></select>
+            </label>
+            <label class="ledger-filter">
+              <span class="field-label">Sort</span>
+              <select id="policy-sort" name="sort">
+                <option value="newest">Newest first</option>
+                <option value="oldest">Oldest first</option>
+                <option value="title">Title A–Z</option>
+              </select>
+            </label>
+            <button class="button button-ghost ledger-reset" id="ledger-reset" type="button">Clear filters</button>
+          </form>
+
+          <div class="ledger-results" id="ledger-results" aria-live="polite"></div>
+        </section>
+
+        <section class="ledger-principles" aria-labelledby="ledger-principles-title">
+          <div><p class="eyebrow">WHAT BELONGS HERE</p><h2 id="ledger-principles-title">The layer beyond the game.</h2></div>
+          <ol>
+            <li><span>01</span><p>Community decisions that cannot be represented by an in-game law or permission.</p></li>
+            <li><span>02</span><p>Procedures, responsibilities, standards, and agreements members need to reference.</p></li>
+            <li><span>03</span><p>Amendments and superseded policies, preserved so the public record stays complete.</p></li>
+          </ol>
+        </section>
+      </main>
+
+      <footer><span>VELARIS · A SEED SOCIETY</span><span>Public policy ledger</span></footer>
+    </div>
+  </body>
+</html>

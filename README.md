@@ -1,10 +1,19 @@
-# Velaris Land Calculator
+# Velaris Community Site
 
-A lightweight land valuation calculator for **Velaris**, a community in **Seed**.
+A lightweight community website for **Velaris**, a society in **SEED**.
 
-The calculator gives the community a consistent starting point for valuing useful territory. It accounts for plot size, the current average daily wage, valuable resources, and the scarcity of land that can be expanded and zoned.
+The site includes:
 
-## Formula
+- **Home** — a public landing page introducing Velaris.
+- **History** — a milestone archive documenting how the society changes over time.
+- **Policies** — a searchable public ledger for community policy that operates outside the game.
+- **Tools** — a directory of community planning calculators.
+- **Land Calculator** — estimates territory value from plot size, wages, resources, and scarcity.
+- **Business Profit Calculator** — estimates revenue, labor, fees, total costs, profit margins, and break-even prices.
+
+Use the shared navigation in the site header to move between the community pages and tools.
+
+## Land valuation formula
 
 ```text
 (area in m² / 100) × average daily wage × 168 × resources factor × scarcity factor
@@ -20,13 +29,44 @@ For a 640 m² chyropyrite plot, using an average daily wage of 104:
 (640 / 100) × 104 × 168 × 1.20 × 1.50 = 201,277.44
 ```
 
-Rounded estimated land value: **201,278**.
+Rounded estimated land value: **201,277**.
 
-## Using the calculator
+## Business profit model
 
-Open `src/index.html` in a browser. Change any input and the valuation, premiums, and calculation breakdown update immediately.
+```text
+revenue = units × sale price
+labor = production hours × workers × (daily wage ÷ workday hours)
+market fees = revenue × fee percentage
+net profit = revenue − materials − labor − market fees − other costs
+```
+
+The break-even price accounts for percentage-based market fees, rather than treating them as a fixed cost.
+
+## Using the calculators
+
+Serve the `src/` directory with any static web server and open the displayed local URL. Change any input and its results update immediately.
 
 The project is deliberately dependency-free. It consists of plain HTML, CSS, and JavaScript, so there is no install or build step.
+
+## Publishing policies
+
+Public policy records live in `src/policies/policy-data.mjs`. Add one structured record per policy using the documented schema in that file. Each policy supports:
+
+- A stable policy ID and title
+- Draft, active, under-review, superseded, or archived status
+- Category, responsible authority, and searchable tags
+- Adoption, effective, and review dates
+- Full policy sections, superseded policy IDs, and an optional source link
+- Related calculators, forms, or supporting resources
+
+Superseded and archived policies should remain in the data file so the public history stays searchable. The ledger validates IDs, statuses, and categories when it loads.
+
+Supported policy categories use stable keys:
+
+- `executive-orders` — Executive Orders
+- `legislative` — Legislative
+- `urban-manager` — Urban Manager
+- `treasury` — Treasury
 
 ## Project structure
 
@@ -35,17 +75,32 @@ src/
 ├── favicon.ico # Browser favicon
 ├── assets/
 │   ├── seed-coin.png # Seed Coin currency icon
+│   ├── week-1.png # First society history milestone
 │   └── velaris-icon.png # Site icon
-├── index.html   # Calculator interface
-├── styles.css   # Responsive visual design
-└── app.js       # Formula and interactions
+├── business/
+│   ├── index.html  # Business calculator route
+│   └── business.js # Business profit model and interactions
+├── history/
+│   └── index.html  # Society milestone archive
+├── land/
+│   └── index.html  # Land calculator route
+├── policies/
+│   ├── index.html        # Public policy ledger
+│   ├── policy-data.mjs   # Published policy records and schema
+│   ├── ledger-core.mjs   # Validation, full-text search, filtering, and sorting
+│   └── ledger.mjs        # Ledger rendering and URL query state
+├── tools/
+│   └── index.html  # Community tools directory
+├── index.html      # Community landing page
+├── styles.css      # Shared responsive visual design
+└── app.js          # Land valuation model and interactions
 ```
 
 ## GitHub Pages
 
 The included GitHub Actions workflow publishes the contents of `src/` whenever a change is pushed to `main` or `master`.
 
-In the GitHub repository, select **Settings → Pages → Source → GitHub Actions**. The next push will deploy the calculator.
+In the GitHub repository, select **Settings → Pages → Source → GitHub Actions**. The next push will deploy the site.
 
 ## Note
 

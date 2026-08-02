@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Estimate business profit, operating costs, margins, and break-even prices in SEED." />
+    <meta name="theme-color" content="#eef0e5" />
+    <title>VELARIS Business Profit Calculator</title>
+    <link rel="icon" href="../favicon.ico?v=3" sizes="any" />
+    <link rel="shortcut icon" href="../favicon.ico?v=3" />
+    <link rel="apple-touch-icon" href="../assets/velaris-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="business.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header" aria-label="Site header">
+        <a class="brand" href="../" aria-label="Velaris home">
+          <img class="brand-mark" src="../assets/velaris-icon.png" alt="" />
+          <span>VELARIS</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a class="nav-link" href="../">Home</a>
+          <a class="nav-link" href="../history/">History</a>
+          <a class="nav-link" href="../policies/">Policies</a>
+          <a class="nav-link nav-link-active" href="../tools/" aria-current="location">Tools</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="calculator-grid" aria-label="Business profit calculator">
+          <form class="card input-card" id="business-form">
+            <div class="card-heading">
+              <div>
+                <p class="section-kicker">01 / OPERATIONS</p>
+                <h2>Business Details</h2>
+              </div>
+              <button class="button button-ghost" id="reset-button" type="button">Reset</button>
+            </div>
+
+            <div class="field-grid business-field-grid">
+              <label class="field field-wide">
+                <span class="field-label">Product or service</span>
+                <span class="input-wrap">
+                  <input id="product-name" name="productName" type="text" value="Construction materials" autocomplete="off" />
+                </span>
+                <span class="field-hint">Used in the copied calculation</span>
+              </label>
+              <label class="field">
+                <span class="field-label">Units produced</span>
+                <span class="input-wrap">
+                  <input id="units" name="units" type="number" min="0" step="1" value="10" inputmode="decimal" />
+                  <span class="input-unit">units</span>
+                </span>
+                <span class="field-hint">Total output for this run</span>
+              </label>
+              <label class="field">
+                <span class="field-label">Sale price</span>
+                <span class="input-wrap">
+                  <input id="sale-price" name="salePrice" type="number" min="0" step="1" value="550" inputmode="decimal" />
+                  <span class="input-unit">/ unit</span>
+                </span>
+                <span class="field-hint">Expected selling price</span>
+              </label>
+              <label class="field">
+                <span class="field-label">Material costs</span>
+                <span class="input-wrap">
+                  <input id="material-cost" name="materialCost" type="number" min="0" step="1" value="2400" inputmode="decimal" />
+                  <span class="input-unit">total</span>
+                </span>
+                <span class="field-hint">Inputs consumed by the run</span>
+              </label>
+              <label class="field">
+                <span class="field-label">Production time</span>
+                <span class="input-wrap">
+                  <input id="production-hours" name="productionHours" type="number" min="0" step="0.25" value="8" inputmode="decimal" />
+                  <span class="input-unit">hours</span>
+                </span>
+                <span class="field-hint">Time required per worker</span>
+              </label>
+              <label class="field">
+                <span class="field-label">Workers</span>
+                <span class="input-wrap">
+                  <input id="workers" name="workers" type="number" min="0" step="1" value="1" inputmode="numeric" />
+                  <span class="input-unit">Seedlings</span>
+                </span>
+                <span class="field-hint">Seedlings assigned to the run</span>
+              </label>
+              <label class="field">
+                <span class="field-label">Daily wage</span>
+                <span class="input-wrap">
+                  <input id="daily-wage" name="dailyWage" type="number" min="0" step="1" value="104" inputmode="decimal" />
+                  <span class="input-unit">/ day</span>
+                </span>
+                <span class="field-hint">Pay for one full workday</span>
+              </label>
+              <label class="field">
+                <span class="field-label">Market fees or tax</span>
+                <span class="input-wrap">
+                  <input id="market-fee" name="marketFee" type="number" min="0" max="99.99" step="0.1" value="5" inputmode="decimal" />
+                  <span class="input-unit">% revenue</span>
+                </span>
+                <span class="field-hint">Percentage deducted from sales</span>
+              </label>
+              <label class="field">
+                <span class="field-label">Other costs</span>
+                <span class="input-wrap">
+                  <input id="other-costs" name="otherCosts" type="number" min="0" step="1" value="100" inputmode="decimal" />
+                  <span class="input-unit">total</span>
+                </span>
+                <span class="field-hint">Transport, rent, or upkeep</span>
+              </label>
+            </div>
+
+            <div class="constant-row">
+              <div>
+                <span class="constant-label">Workday length</span>
+                <span class="constant-help">Converts daily wages into hourly labor cost</span>
+              </div>
+              <label class="compact-input">
+                <input id="workday-hours" name="workdayHours" type="number" min="0.25" step="0.25" value="8" inputmode="decimal" aria-label="Workday length" />
+                <span>hours</span>
+              </label>
+            </div>
+          </form>
+
+          <aside class="card result-card" id="result-card" aria-live="polite">
+            <div class="result-topline">
+              <p class="section-kicker section-kicker-light">02 / PROFITABILITY</p>
+              <span class="status-pill" id="profit-status">Profitable</span>
+            </div>
+            <div class="result-main">
+              <p>ESTIMATED NET PROFIT</p>
+              <span class="amount-with-coin amount-with-coin-main">
+                <output class="result-value" id="net-profit" for="units sale-price material-cost production-hours workers daily-wage workday-hours market-fee other-costs">2,621</output>
+                <img class="coin-icon" src="../assets/seed-coin.png" alt="Seed Coin" />
+              </span>
+              <span id="profit-caption">from 10 units sold at 550.00 each</span>
+            </div>
+            <div class="metrics business-metrics">
+              <div>
+                <span>Profit margin</span>
+                <strong id="profit-margin">+47.65%</strong>
+              </div>
+              <div>
+                <span>Break-even price</span>
+                <strong class="amount-with-coin"><span id="break-even-price">274.11</span><img class="coin-icon" src="../assets/seed-coin.png" alt="Seed Coin" /></strong>
+              </div>
+              <div>
+                <span>Profit / labor hour</span>
+                <strong class="amount-with-coin"><span id="profit-per-hour">327.63</span><img class="coin-icon" src="../assets/seed-coin.png" alt="Seed Coin" /></strong>
+              </div>
+              <div>
+                <span>Return on cost</span>
+                <strong id="return-on-cost">+91.04%</strong>
+              </div>
+            </div>
+            <button class="button button-primary" id="copy-button" type="button">
+              <span id="copy-label">Copy business summary</span>
+              <span aria-hidden="true">↗</span>
+            </button>
+          </aside>
+        </section>
+
+        <section class="breakdown" aria-label="Profit calculation breakdown">
+          <div class="breakdown-heading">
+            <p class="section-kicker">COST BREAKDOWN</p>
+            <code id="formula-display">5,500 revenue − 2,879 costs = 2,621 profit</code>
+          </div>
+          <ol class="steps business-steps">
+            <li>
+              <span class="step-number">01</span>
+              <div><span>GROSS REVENUE</span><strong class="amount-with-coin"><span id="gross-revenue">5,500</span><img class="coin-icon" src="../assets/seed-coin.png" alt="Seed Coin" /></strong></div>
+              <small>Units × sale price</small>
+            </li>
+            <li>
+              <span class="step-number">02</span>
+              <div><span>LABOR COST</span><strong class="amount-with-coin"><span id="labor-cost">104</span><img class="coin-icon" src="../assets/seed-coin.png" alt="Seed Coin" /></strong></div>
+              <small id="labor-caption">8.00 worker-hours × 13.00</small>
+            </li>
+            <li>
+              <span class="step-number">03</span>
+              <div><span>MARKET FEES</span><strong class="amount-with-coin"><span id="market-fee-cost">275</span><img class="coin-icon" src="../assets/seed-coin.png" alt="Seed Coin" /></strong></div>
+              <small id="market-fee-caption">5.00% of gross revenue</small>
+            </li>
+            <li>
+              <span class="step-number">04</span>
+              <div><span>TOTAL COST</span><strong class="amount-with-coin"><span id="total-cost">2,879</span><img class="coin-icon" src="../assets/seed-coin.png" alt="Seed Coin" /></strong></div>
+              <small>Materials + labor + fees + other</small>
+            </li>
+          </ol>
+        </section>
+      </main>
+
+      <footer>
+        <span>VELARIS · A SEED SOCIETY</span>
+        <span>Community planning tool · Not an official SEED pricing system</span>
+      </footer>
+    </div>
+  </body>
+</html>

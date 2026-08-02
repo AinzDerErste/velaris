@@ -3,179 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Estimate territory value from plot size, wages, resources, and land scarcity."
-    />
-    <meta name="theme-color" content="#f7f5ef" />
-    <title>VELARIS Land Calculator</title>
-    <link rel="icon" href="favicon.ico?v=2" sizes="any" />
-    <link rel="shortcut icon" href="favicon.ico?v=2" />
+    <meta name="description" content="Velaris is a player-built society on Avesta in SEED. Follow our history and use our community planning tools." />
+    <meta name="theme-color" content="#eef0e5" />
+    <title>VELARIS · A Society on Avesta</title>
+    <link rel="icon" href="favicon.ico?v=3" sizes="any" />
+    <link rel="shortcut icon" href="favicon.ico?v=3" />
     <link rel="apple-touch-icon" href="assets/velaris-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="app.js" defer></script>
   </head>
   <body>
     <div class="page-shell">
       <header class="site-header" aria-label="Site header">
-        <a class="brand" href="#" aria-label="Velaris Land Calculator home">
+        <a class="brand" href="./" aria-label="Velaris home">
           <img class="brand-mark" src="assets/velaris-icon.png" alt="" />
           <span>VELARIS</span>
         </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a class="nav-link nav-link-active" href="./" aria-current="page">Home</a>
+          <a class="nav-link" href="history/">History</a>
+          <a class="nav-link" href="policies/">Policies</a>
+          <a class="nav-link" href="tools/">Tools</a>
+        </nav>
       </header>
 
       <main>
-        <section class="calculator-grid" aria-label="Land value calculator">
-          <form class="card input-card" id="calculator-form">
-            <div class="card-heading">
-              <div>
-                <h2>Land Details</h2>
-              </div>
-              <button class="button button-ghost" id="reset-button" type="button">
-                Reset
-              </button>
+        <section class="home-hero">
+          <div class="hero-copy">
+            <p class="eyebrow">A PLAYER-BUILT SOCIETY ON AVESTA</p>
+            <h1>Grow together.<br />Leave roots behind.</h1>
+            <p class="hero-lede">Velaris is a living community in SEED—building homes, industry, culture, and a shared record of the world we create together.</p>
+            <div class="hero-actions">
+              <a class="button button-primary button-inline" href="history/">Explore our history <span aria-hidden="true">↗</span></a>
+              <a class="text-link" href="tools/">Open community tools <span aria-hidden="true">→</span></a>
             </div>
-
-            <div class="field-grid">
-              <label class="field">
-                <span class="field-label">Plot size</span>
-                <span class="input-wrap">
-                  <input id="plot-size" name="plotSize" type="number" min="0" step="1" value="640" inputmode="decimal" />
-                  <span class="input-unit">m²</span>
-                </span>
-                <span class="field-hint">Total usable area</span>
-              </label>
-
-              <label class="field">
-                <span class="field-label">Average daily wage</span>
-                <span class="input-wrap">
-                  <input id="daily-wage" name="dailyWage" type="number" min="0" step="1" value="104" inputmode="decimal" />
-                  <span class="input-unit">/ day</span>
-                </span>
-                <span class="field-hint">Current economic baseline</span>
-              </label>
-
-              <label class="field">
-                <span class="field-label">Resources premium</span>
-                <span class="input-wrap">
-                  <input id="resources-premium" name="resourcesPremium" type="number" min="-100" step="1" value="20" inputmode="decimal" />
-                  <span class="input-unit">%</span>
-                </span>
-                <span class="field-hint">20% premium = × 1.20</span>
-              </label>
-
-              <label class="field">
-                <span class="field-label">Scarcity premium</span>
-                <span class="input-wrap">
-                  <input id="scarcity-premium" name="scarcityPremium" type="number" min="-100" step="1" value="50" inputmode="decimal" />
-                  <span class="input-unit">%</span>
-                </span>
-                <span class="field-hint">50% premium = × 1.50</span>
-              </label>
-            </div>
-
-            <div class="constant-row">
-              <div>
-                <span class="constant-label">Wage-day multiplier</span>
-                <span class="constant-help">Model constant</span>
-              </div>
-              <label class="compact-input">
-                <input id="wage-days" name="wageDays" type="number" min="0" step="1" value="168" inputmode="numeric" aria-label="Wage-day multiplier" />
-                <span>days</span>
-              </label>
-            </div>
-          </form>
-
-          <aside class="card result-card" aria-live="polite">
-            <div class="result-topline">
-              <p class="section-kicker section-kicker-light">02 / VALUATION</p>
-            </div>
-
-            <div class="result-main">
-              <p>ESTIMATED LAND VALUE</p>
-              <span class="amount-with-coin amount-with-coin-main">
-                <output id="land-value" for="plot-size daily-wage resources-premium scarcity-premium wage-days">201,278</output>
-                <img class="coin-icon" src="assets/seed-coin.png" alt="Seed Coin" />
-              </span>
-              <span id="value-caption">for 640 m² of territory</span>
-            </div>
-
-            <div class="metrics">
-              <div>
-                <span>Value / m²</span>
-                <strong class="amount-with-coin">
-                  <span id="value-per-sqm">314.50</span>
-                  <img class="coin-icon" src="assets/seed-coin.png" alt="Seed Coin" />
-                </strong>
-              </div>
-              <div>
-                <span>Combined premium</span>
-                <strong id="combined-premium">+80%</strong>
-              </div>
-            </div>
-
-            <button class="button button-primary" id="copy-button" type="button">
-              <span id="copy-label">Copy calculation</span>
-              <span aria-hidden="true">↗</span>
-            </button>
-          </aside>
-        </section>
-
-        <section class="breakdown" aria-label="Calculation breakdown">
-          <div class="breakdown-heading">
-            <p class="section-kicker">BREAKDOWN</p>
-            <code id="formula-display">(640 ÷ 100) × 104 × 168 × 1.20 × 1.50</code>
           </div>
-
-          <ol class="steps">
-            <li>
-              <span class="step-number">01</span>
-              <div>
-                <span>BASE LAND VALUE</span>
-                <strong class="amount-with-coin">
-                  <span id="base-value">111,821</span>
-                  <img class="coin-icon" src="assets/seed-coin.png" alt="Seed Coin" />
-                </strong>
-              </div>
-              <small>Area units × wage × days</small>
-            </li>
-            <li>
-              <span class="step-number">02</span>
-              <div>
-                <span>AFTER RESOURCES</span>
-                <strong class="amount-with-coin">
-                  <span id="resource-value">134,185</span>
-                  <img class="coin-icon" src="assets/seed-coin.png" alt="Seed Coin" />
-                </strong>
-              </div>
-              <small id="resource-factor-label">Base value × 1.20</small>
-            </li>
-            <li>
-              <span class="step-number">03</span>
-              <div>
-                <span>AFTER SCARCITY</span>
-                <strong class="amount-with-coin">
-                  <span id="scarcity-value">201,278</span>
-                  <img class="coin-icon" src="assets/seed-coin.png" alt="Seed Coin" />
-                </strong>
-              </div>
-              <small id="scarcity-factor-label">Resource value × 1.50</small>
-            </li>
-          </ol>
+          <div class="hero-emblem" aria-hidden="true">
+            <div class="emblem-ring"><img src="assets/velaris-icon.png" alt="" /></div>
+            <span>ROOTED ON AVESTA</span>
+          </div>
         </section>
 
+        <section class="milestone-feature" aria-labelledby="week-one-title">
+          <a class="milestone-image-wrap" href="history/#week-one" aria-label="View the Week 1 milestone">
+            <img class="milestone-image" src="assets/week-1.png" alt="An aerial view of Velaris after its first week, with homes, workshops, grow plots, roads, and the landing pod." />
+            <span class="image-badge">WEEK 01 · FOUNDATIONS</span>
+          </a>
+          <div class="milestone-copy">
+            <p class="eyebrow">LATEST MILESTONE</p>
+            <h2 id="week-one-title">The first roots take hold.</h2>
+            <p>One week in, Velaris had already begun to read like a settlement: connected streets, working plots, homes, workshops, and the beginnings of a civic center.</p>
+            <a class="text-link" href="history/#week-one">See the Week 1 record <span aria-hidden="true">→</span></a>
+          </div>
+        </section>
+
+        <section class="home-pillars" aria-labelledby="pillars-title">
+          <div class="section-heading">
+            <p class="eyebrow">WHAT WE ARE BUILDING</p>
+            <h2 id="pillars-title">A society with memory.</h2>
+          </div>
+          <div class="pillar-grid">
+            <article class="pillar-card"><span>01</span><h3>Community</h3><p>Shared effort turns a collection of plots into a place worth calling home.</p></article>
+            <article class="pillar-card"><span>02</span><h3>Stewardship</h3><p>Practical tools help members value land and build sustainable businesses.</p></article>
+            <article class="pillar-card"><span>03</span><h3>Legacy</h3><p>Milestones preserve how Velaris changes, one era and one screenshot at a time.</p></article>
+          </div>
+        </section>
+
+        <section class="home-tools-callout">
+          <div><p class="eyebrow eyebrow-light">TOOLS FOR THE SOCIETY</p><h2>Make better decisions together.</h2></div>
+          <p>Use Velaris planning tools to estimate territory value and understand whether a business can operate profitably.</p>
+          <a class="button button-gold button-inline" href="tools/">Browse tools <span aria-hidden="true">↗</span></a>
+        </section>
       </main>
 
-      <footer>
-        <span>VELARIS LAND CALCULATOR</span>
-        <span>Formula by Miffy · (m² ÷ 100) × wage × 168 × resources × scarcity</span>
-      </footer>
+      <footer><span>VELARIS · A SEED SOCIETY</span><span>Rooted on Avesta · Built by its community</span></footer>
     </div>
   </body>
 </html>
