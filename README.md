@@ -32,6 +32,10 @@ The project is deliberately dependency-free. It consists of plain HTML, CSS, and
 
 ```text
 src/
+├── favicon.ico # Browser favicon
+├── assets/
+│   ├── seed-coin.png # Seed Coin currency icon
+│   └── velaris-icon.png # Site icon
 ├── index.html   # Calculator interface
 ├── styles.css   # Responsive visual design
 └── app.js       # Formula and interactions

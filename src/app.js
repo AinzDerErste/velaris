@@ -28,8 +28,8 @@ const elements = {
   copyLabel: document.querySelector("#copy-label"),
 };
 
-const integerFormatter = new Intl.NumberFormat("de-CH", { maximumFractionDigits: 0 });
-const decimalFormatter = new Intl.NumberFormat("de-CH", {
+const integerFormatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
+const decimalFormatter = new Intl.NumberFormat("en-US", {
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
 });

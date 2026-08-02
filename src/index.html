@@ -8,7 +8,10 @@
       content="Estimate territory value from plot size, wages, resources, and land scarcity."
     />
     <meta name="theme-color" content="#f7f5ef" />
-    <title>Velaris Land Calculator</title>
+    <title>VELARIS Land Calculator</title>
+    <link rel="icon" href="favicon.ico?v=2" sizes="any" />
+    <link rel="shortcut icon" href="favicon.ico?v=2" />
+    <link rel="apple-touch-icon" href="assets/velaris-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,30 +25,17 @@
     <div class="page-shell">
       <header class="site-header" aria-label="Site header">
         <a class="brand" href="#" aria-label="Velaris Land Calculator home">
-          <span class="brand-mark" aria-hidden="true">V</span>
+          <img class="brand-mark" src="assets/velaris-icon.png" alt="" />
           <span>VELARIS</span>
         </a>
-        <span class="header-label">LAND VALUATION TOOL</span>
       </header>
 
       <main>
-        <section class="hero" aria-labelledby="page-title">
-          <div>
-            <p class="eyebrow"><span></span> Territory economics</p>
-            <h1 id="page-title">What is this land<br /><em>really worth?</em></h1>
-          </div>
-          <p class="hero-copy">
-            A practical valuation model for land where useful territory is scarce,
-            expensive to unlock, and slow to zone.
-          </p>
-        </section>
-
         <section class="calculator-grid" aria-label="Land value calculator">
           <form class="card input-card" id="calculator-form">
             <div class="card-heading">
               <div>
-                <p class="section-kicker">01 / INPUTS</p>
-                <h2>Plot assumptions</h2>
+                <h2>Land Details</h2>
               </div>
               <button class="button button-ghost" id="reset-button" type="button">
                 Reset
@@ -105,19 +95,24 @@
           <aside class="card result-card" aria-live="polite">
             <div class="result-topline">
               <p class="section-kicker section-kicker-light">02 / VALUATION</p>
-              <span class="live-badge"><span></span> LIVE</span>
             </div>
 
             <div class="result-main">
               <p>ESTIMATED LAND VALUE</p>
-              <output id="land-value" for="plot-size daily-wage resources-premium scarcity-premium wage-days">201’278</output>
+              <span class="amount-with-coin amount-with-coin-main">
+                <output id="land-value" for="plot-size daily-wage resources-premium scarcity-premium wage-days">201,278</output>
+                <img class="coin-icon" src="assets/seed-coin.png" alt="Seed Coin" />
+              </span>
               <span id="value-caption">for 640 m² of territory</span>
             </div>
 
             <div class="metrics">
               <div>
                 <span>Value / m²</span>
-                <strong id="value-per-sqm">314.50</strong>
+                <strong class="amount-with-coin">
+                  <span id="value-per-sqm">314.50</span>
+                  <img class="coin-icon" src="assets/seed-coin.png" alt="Seed Coin" />
+                </strong>
               </div>
               <div>
                 <span>Combined premium</span>
@@ -132,50 +127,54 @@
           </aside>
         </section>
 
-        <section class="breakdown" aria-labelledby="breakdown-title">
+        <section class="breakdown" aria-label="Calculation breakdown">
           <div class="breakdown-heading">
-            <div>
-              <p class="section-kicker">03 / BREAKDOWN</p>
-              <h2 id="breakdown-title">How the number is built</h2>
-            </div>
+            <p class="section-kicker">BREAKDOWN</p>
             <code id="formula-display">(640 ÷ 100) × 104 × 168 × 1.20 × 1.50</code>
           </div>
 
           <ol class="steps">
             <li>
               <span class="step-number">01</span>
-              <div><span>BASE LAND VALUE</span><strong id="base-value">111’821</strong></div>
+              <div>
+                <span>BASE LAND VALUE</span>
+                <strong class="amount-with-coin">
+                  <span id="base-value">111,821</span>
+                  <img class="coin-icon" src="assets/seed-coin.png" alt="Seed Coin" />
+                </strong>
+              </div>
               <small>Area units × wage × days</small>
             </li>
             <li>
               <span class="step-number">02</span>
-              <div><span>AFTER RESOURCES</span><strong id="resource-value">134’185</strong></div>
+              <div>
+                <span>AFTER RESOURCES</span>
+                <strong class="amount-with-coin">
+                  <span id="resource-value">134,185</span>
+                  <img class="coin-icon" src="assets/seed-coin.png" alt="Seed Coin" />
+                </strong>
+              </div>
               <small id="resource-factor-label">Base value × 1.20</small>
             </li>
             <li>
               <span class="step-number">03</span>
-              <div><span>AFTER SCARCITY</span><strong id="scarcity-value">201’278</strong></div>
+              <div>
+                <span>AFTER SCARCITY</span>
+                <strong class="amount-with-coin">
+                  <span id="scarcity-value">201,278</span>
+                  <img class="coin-icon" src="assets/seed-coin.png" alt="Seed Coin" />
+                </strong>
+              </div>
               <small id="scarcity-factor-label">Resource value × 1.50</small>
             </li>
           </ol>
         </section>
 
-        <section class="context-note" aria-label="Model context">
-          <span class="note-mark" aria-hidden="true">i</span>
-          <div>
-            <h2>Why include scarcity?</h2>
-            <p>
-              Useful territory cannot be expanded instantly. Upgrades are costly,
-              and zoning newly acquired territory takes time—so the model lets land
-              scarcity carry a visible premium.
-            </p>
-          </div>
-        </section>
       </main>
 
       <footer>
         <span>VELARIS LAND CALCULATOR</span>
-        <span>Formula: (m² ÷ 100) × wage × 168 × resources × scarcity</span>
+        <span>Formula by Miffy · (m² ÷ 100) × wage × 168 × resources × scarcity</span>
       </footer>
     </div>
   </body>
