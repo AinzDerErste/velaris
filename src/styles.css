@@ -671,12 +671,16 @@ footer {
 .button-gold:hover { background: #cfb46e; }
 
 .home-tools-callout .button-gold.button-inline {
+  display: inline-flex;
+  align-items: center;
   min-width: 128px;
   padding: 11px 14px;
   border-radius: 999px;
   justify-content: center;
   gap: 12px;
+  color: #18241a;
   font-size: 13px;
+  text-decoration: none;
 }
 
 .page-intro {
