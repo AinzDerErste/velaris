@@ -75,4 +75,36 @@ export const policies = Object.freeze([
       },
     ],
   },
+  {
+    id: "VEL-POL-002",
+    title: "Community Conduct & Moderation Policy",
+    summary: "Establishes community conduct expectations and a fair, proportionate, transparent approach to moderation that favors de-escalation and preserves open participation.",
+    status: "active",
+    category: "executive-orders",
+    authority: "Executive Office of Velaris",
+    adoptedOn: "2026-08-11",
+    effectiveOn: "2026-08-11",
+    reviewOn: "",
+    tags: [
+      "community conduct",
+      "moderation",
+      "de-escalation",
+      "community officials",
+      "member participation",
+      "transparency",
+    ],
+    supersedes: [],
+    sourceUrl: "",
+    relatedLinks: [],
+    sections: [
+      {
+        heading: "",
+        body: "As Velaris continues to grow, I want to make sure we have clearer expectations around community conduct and how moderation is handled when issues arise.\n\nThe goal here isn’t to restrict discussion, disagreement, humor, or criticism. It’s to make sure everyone understands how we intend to approach problems fairly, proportionately, and transparently when they do occur.\n\nWith that in mind, we’re putting the following Community Conduct & Moderation Policy in place going forward:",
+      },
+      {
+        heading: "Community Conduct & Moderation Policy",
+        body: "Velaris is intended to be a cooperative, social community where members are free to joke, disagree, compete, debate, criticize decisions, and express themselves openly.\n\nMembers are expected to treat one another with reasonable respect and avoid conduct that persistently disrupts the community or interferes with the ability of others to participate and enjoy it.\n\nModeration may become appropriate when conduct is seriously or repeatedly disruptive, hostile, harassing, deliberately harmful, or continues after a reasonable request to stop.\n\nWhenever practical, moderation should favor de-escalation and resolution before punishment. Members should generally be given an opportunity to understand the concern and correct their behavior.\n\nModeration will normally progress through:\n\n- Informal Request: A member is asked to stop, change course, or allow a situation to cool down.\n\n- Formal Warning: Continued or more serious conduct may result in a clear warning.\n\n- Final Warning: Repeated disregard for reasonable moderation may result in notice that further misconduct could lead to removal.\n\n- Removal: Reserved for serious misconduct or a continued unwillingness to respect the community and its members after reasonable attempts at resolution.\n\nThese steps are guidelines rather than rigid requirements. Serious circumstances may require immediate action, while ordinary disagreements may require no intervention at all.\n\nModeration should be proportionate to the conduct involved and should consider context, severity, repetition, intent, effect on others, and whether previous attempts at resolution were respected.\n\nNo member will be disciplined merely for disagreeing with another Seedling, criticizing the government, questioning a decision, competing economically, making an honest mistake, or participating in good-faith debate.\n\nCommunity officials are subject to the same standards as other members. Where an official is personally involved in a dispute, another appropriate official or community body should assist with the decision when practical.\n\nSignificant moderation decisions should be explained openly enough for the community to understand the reason for the action, while avoiding unnecessary public humiliation or escalation.\n\nModeration exists to preserve participation, not conformity. Its purpose is to keep Velaris a place where people can disagree, compete, socialize, and still reasonably coexist.",
+      },
+    ],
+  },
 ]);

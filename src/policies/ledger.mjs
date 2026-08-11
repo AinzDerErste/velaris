@@ -79,7 +79,7 @@ function createPolicyRecord(policy) {
     const content = element("div", "policy-body-content");
     for (const section of policy.sections) {
       const sectionNode = element("section", "policy-section");
-      sectionNode.append(element("h4", "", section.heading || "Policy text"));
+      if (section.heading) sectionNode.append(element("h4", "", section.heading));
       for (const paragraph of String(section.body || "").split(/\n{2,}/).filter(Boolean)) {
         sectionNode.append(element("p", "", paragraph));
       }
