@@ -149,7 +149,17 @@ h2 {
   border: 0;
   border-radius: 10px;
   cursor: pointer;
+  text-decoration: none;
   transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.button > span[aria-hidden="true"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25em;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .button:active { transform: translateY(1px); }
@@ -680,7 +690,6 @@ footer {
   gap: 12px;
   color: #18241a;
   font-size: 13px;
-  text-decoration: none;
 }
 
 .page-intro {
