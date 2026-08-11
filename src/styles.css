@@ -670,6 +670,15 @@ footer {
 .button-gold { color: #18241a; background: var(--gold); }
 .button-gold:hover { background: #cfb46e; }
 
+.home-tools-callout .button-gold.button-inline {
+  min-width: 128px;
+  padding: 11px 14px;
+  border-radius: 999px;
+  justify-content: center;
+  gap: 12px;
+  font-size: 13px;
+}
+
 .page-intro {
   padding: 92px 0 76px;
   border-bottom: 1px solid var(--border);
